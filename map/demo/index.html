@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mapTest</title>
+</head>
+<style>
+    html,body,div{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .map_waper{
+        position: relative;
+    }
+    .map_return{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 66px;
+        height: 66px;
+        background: url("image/icon-back.png");
+        cursor: pointer;
+        z-index: 1;
+    }
+    .map_return:hover{
+        opacity: 0.5;
+    }
+</style>
+<body>
+<div class="map_waper">
+    <div id="jsMap"></div>
+    <span class="map_return" id="jsReturn"></span>
+</div>
+<script src="lib/jQuery.v1.11.1.min.js"></script>
+<script src="lib/snap.svg-min.js"></script>
+<script src="lib/OperateMap.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
