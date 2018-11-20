@@ -58,6 +58,9 @@ exports.getPathData=(jsonData,level,mapCode)=>{
             }else{
                 result[mapId]=path;
             }
+            if(mapId=='430600'){
+                console.log(path);
+            }
             return true;
         }
     })

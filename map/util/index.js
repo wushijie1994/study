@@ -9,12 +9,18 @@ const baseFile='quanguo';
 
 /*数据遍历的深度*/
 const maxlevel=3;
-let requireQueue=[{
+/*let requireQueue=[{
     pathName:'quanguo',
     level:0,
+}];*/
+let requireQueue=[{
+    pathName:'430000',
+    level:1,
 }];
 /*设置请求的时间间隔*/
-const delay=2000;
+const delay=0;
+/*设置是否抓取所有数据*/
+const getAll=false;
 /*记录失败的数据*/
 let disableQueue=[];
 /*记录成功的数据*/
@@ -48,7 +54,7 @@ function getPathData() {
             const pathData=utils.getPathData(data,level,pathName);
             /*循环遍历*/
             level+=1;
-            if(level<maxlevel){
+            if(level<maxlevel&&getAll){
                 Object.keys(pathData).forEach(key=>{
                     requireQueue.push({
                         pathName:key,
@@ -59,13 +65,13 @@ function getPathData() {
             writeFileHandler(pathName,pathData).then(data=>{
                 // debugger
                 successQueue.push(pathName);
-                getPathDataDealy();
+                getAll&&getPathDataDealy();
             });
         }).catch(e=>{
             console.error(`not found 404:${pathName}\n${e.message}`);
             // debugger
             disableQueue.push(pathName);
-            getPathData();
+            getAll&&getPathData();
         })
     }
 }
@@ -80,8 +86,7 @@ function getPathDataDealy() {
     },delay);
 }
 
-getPathData(baseFile,0);
-// getPathData('110000',1);
+getPathData();
 
 
 
